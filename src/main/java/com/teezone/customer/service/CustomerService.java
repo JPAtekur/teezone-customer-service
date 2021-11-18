@@ -27,8 +27,7 @@ public class CustomerService {
     public ResponseTemplateVO getCustomerProduct(Long customerId) {
         Customer customer = customerRepository.findCustomerByCustomerId(customerId);
         Product product =
-                restTemplate.getForObject("http://localhost:9001/product/1", Product.class);
-        ResponseTemplateVO vo = new ResponseTemplateVO(product,customer);
-        return vo;
+                restTemplate.getForObject("http://PRODUCT-SERVICE/product/1", Product.class);
+        return new ResponseTemplateVO(product,customer);
     }
 }
